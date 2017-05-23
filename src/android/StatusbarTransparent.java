@@ -11,6 +11,19 @@ import android.view.WindowManager.LayoutParams;
 
 public class StatusbarTransparent extends CordovaPlugin {
 
+	public void initialize(CordovaInterface cordova, CordovaWebView webView) {        	
+		super.initialize(cordova, webView);
+		
+		if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+			cordova.getActivity().runOnUiThread( new Runnable() {
+				public void run() {
+					cordova.getActivity().getWindow().clearFlags(LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+					cordova.getActivity().getWindow().addFlags(LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				}
+			});			
+		} 
+	}
+	
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callback) throws JSONException {
 		// grab the correct methods
