@@ -1,5 +1,7 @@
 package de.dataexperts.cordova.plugin.statusbar;
 
+import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
